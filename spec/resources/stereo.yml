@@ -1,0 +1,5 @@
+store: "/Users/cw/dev/playbox/guzzle-playback/var/record"
+tapes:
+  my_tape:
+    filters:
+      status_code: 200

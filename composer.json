@@ -1,0 +1,26 @@
+{
+    "name": "ikwattro/guzzle-playback",
+    "description": "Guzzle Recorder for recording Request/Responses and replay them back in a Mock",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.0",
+        "symfony/yaml": "^2.7",
+        "symfony/filesystem": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7",
+        "phpspec/phpspec": "^2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christophe Willemsen",
+            "email": "willemsen.christophe@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Ikwattro\\GuzzleStereo\\": "src/"
+      }
+    }
+}
