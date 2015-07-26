@@ -27,7 +27,7 @@
     },
     "autoload-dev": {
       "psr-4": {
-        "Ikwattro\\GuzzleStereo\\Tests": "tests/"
+        "Ikwattro\\GuzzleStereo\\Tests\\": "tests/"
       }
     }
 }
