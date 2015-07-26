@@ -1,0 +1,15 @@
+language: php
+
+php:
+    - 5.6
+    - nightly
+
+before_script:
+    - composer self-update
+    - composer install --prefer-source --no-interaction
+
+script:
+    - ./vendor/bin/phpspec run -f pretty
+
+notifications:
+    email: "willemsen.christophe@gmail.com"
