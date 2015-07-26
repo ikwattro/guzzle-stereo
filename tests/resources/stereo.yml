@@ -1,0 +1,8 @@
+tapes:
+  tape-all: ~
+  tape-success:
+    filters:
+      status_code: 200
+  tape-unauthorized:
+    filters:
+      status_code: 403

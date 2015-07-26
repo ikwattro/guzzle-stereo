@@ -102,7 +102,7 @@ class Recorder
     }
 
     /**
-     * @return array
+     * @return \Ikwattro\GuzzleStereo\Record\Tape[]
      */
     public function getTapes()
     {
@@ -123,7 +123,7 @@ class Recorder
 
     /**
      * @param string $name
-     * @return \Ikwattro\GuzzleStereo\Record\Play
+     * @return \Ikwattro\GuzzleStereo\Record\Tape
      * @throw \Ikwattro\GuzzleStereo\Exception\RecordException When the tape can not be found
      */
     public function getTape($name)
@@ -146,13 +146,16 @@ class Recorder
         $tapes = isset($this->config['tapes']) ? $this->config['tapes'] : [];
         foreach ($tapes as $name => $settings) {
             $tape = new Tape($name);
-            foreach ($settings['filters'] as $filter => $args) {
-                if (!is_array($args)) {
-                    $f = new $allowedFilters[$filter]($args);
-                } else {
-                    $f = new $allowedFilters[$filter](...$args);
+            if (isset($settings['filters'])) {
+                foreach ($settings['filters'] as $filter => $args) {
+                    if (!is_array($args)) {
+                        $f = new $allowedFilters[$filter]($args);
+                    }
+                    else {
+                        $f = new $allowedFilters[$filter](...$args);
+                    }
+                    $tape->addFilter($f);
                 }
-                $tape->addFilter($f);
             }
             $this->addTape($tape);
         }

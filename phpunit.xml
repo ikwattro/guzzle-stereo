@@ -10,6 +10,6 @@
         <log type="coverage-html" target="./cov/codeCoverage" charset="UTF-8"
              yui="true" highlight="true"
              lowUpperBound="50" highLowerBound="80"/>
-        <log type="testdox-html" target="./log/testdox.html" />
+        <log type="testdox-html" target="./cov/testdox.html" />
     </logging>
 </phpunit>
