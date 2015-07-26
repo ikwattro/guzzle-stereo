@@ -1,0 +1,15 @@
+<phpunit bootstrap="./vendor/autoload.php"
+         backupGlobals="false"
+         colors="true">
+    <testsuites>
+        <testsuite name="Guzzle Stereo Test Suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="./cov/codeCoverage" charset="UTF-8"
+             yui="true" highlight="true"
+             lowUpperBound="50" highLowerBound="80"/>
+        <log type="testdox-html" target="./log/testdox.html" />
+    </logging>
+</phpunit>
