@@ -1,5 +1,5 @@
 {
-    "name": "ikwattro/guzzle-playback",
+    "name": "ikwattro/guzzle-stereo",
     "description": "Guzzle Recorder for recording Request/Responses and replay them back in a Mock",
     "keywords": ["http", "psr7", "guzzle", "record", "replay", "response", "mock"],
     "type": "library",
