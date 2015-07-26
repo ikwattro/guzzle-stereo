@@ -1,8 +1,10 @@
 {
     "name": "ikwattro/guzzle-playback",
     "description": "Guzzle Recorder for recording Request/Responses and replay them back in a Mock",
+    "keywords": ["http", "psr7", "guzzle", "record", "replay", "response", "mock"],
     "type": "library",
     "require": {
+        "php": ">=5.6",
         "guzzlehttp/guzzle": "^6.0",
         "symfony/yaml": "^2.7",
         "symfony/filesystem": "^2.7"

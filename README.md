@@ -107,6 +107,14 @@ A file named `record_ + {tape_name}` will be created in the provided store direc
 
 ---
 
+### TODO
+
+* blacklists
+* null tape
+* better configuration management (maybe Symfony config component)
+
+---
+
 ### Tests
 
 `phpspec` and `phpunit` are used for the tests:
