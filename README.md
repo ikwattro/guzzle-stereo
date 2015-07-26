@@ -2,6 +2,8 @@
 
 **Record** and **Replay** HTTP Responses easily.
 
+[![Build Status](https://travis-ci.org/ikwattro/guzzle-stereo.svg?branch=master)](https://travis-ci.org/ikwattro/guzzle-stereo)
+
 ### Requirements
 
 * PHP 5.6+
