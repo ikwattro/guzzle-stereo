@@ -73,6 +73,38 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(5, $this->recorder->getTape('tape-unauthorized')->getResponses());
     }
 
+    public function testNonEmptyBodyFilterIsRecordingTracks()
+    {
+        $mock = SimpleMockHandler::create()
+          ->withMultipleResponses(5, 200, array(), json_encode(array('id' => 1)))
+          ->build();
+        $client = SimpleMockedClient::createMockedClient($mock, $this->recorder);
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $client->get('/');
+            } catch (RequestException $e) {
+
+            }
+        }
+        $this->assertCount(5, $this->recorder->getTape('filter-non-empty')->getResponses());
+    }
+
+    public function testNonEmptyBodyFilterIsNotRecordingTracksWhenBodyIsEmpty()
+    {
+        $mock = SimpleMockHandler::create()
+          ->withMultipleResponses(5, 200, array())
+          ->build();
+        $client = SimpleMockedClient::createMockedClient($mock, $this->recorder);
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $client->get('/');
+            } catch (RequestException $e) {
+
+            }
+        }
+        $this->assertCount(0, $this->recorder->getTape('filter-non-empty')->getResponses());
+    }
+
     public function testRecorderIsDumpingTapes()
     {
         $mock = SimpleMockHandler::create()

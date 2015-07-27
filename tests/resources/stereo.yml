@@ -6,3 +6,6 @@ tapes:
   tape-unauthorized:
     filters:
       status_code: 403
+  filter-non-empty:
+    filters:
+      non_empty_body: ~

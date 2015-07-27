@@ -119,6 +119,32 @@ $player->get('/');
 
 ---
 
+## Filters reference
+
+### StatusCode
+
+Include the `Response` only if it has the corresponding status code.
+
+```yaml
+tapes:
+	my_tape:
+		filters:
+			status_code: 200
+```
+
+### Non Empty Body
+
+Include the `Response` only if the body is not empty.
+
+```yaml
+tapes:
+	my_tape:
+		filters:
+			non_empty_body: ~
+```
+
+---
+
 ### TODO
 
 * more filters
