@@ -169,9 +169,9 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
             }
         }
         $this->recorder->dump();
-        $successTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-success.json';
-        $AllTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-all.json';
-        $UnauthTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-unauthorized.json';
+        $successTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_success.json';
+        $AllTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_all.json';
+        $UnauthTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_unauthorized.json';
         $this->assertFileExists($successTapeFile);
         $this->assertFileExists($AllTapeFile);
         $this->assertFileExists($UnauthTapeFile);
