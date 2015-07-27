@@ -12,3 +12,6 @@ tapes:
   filter-has-header:
     filters:
       has_header: "Content-Type"
+custom-filters:
+  - "Ikwattro\GuzzleStereo\Test\Integration\Filter\CustomFilter"
+  - "Ikwattro\GuzzleStereo\Test\Integration\Filter\AnotherCustomFilter"

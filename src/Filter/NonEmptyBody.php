@@ -20,7 +20,7 @@ class NonEmptyBody implements FilterInterface
     /**
      * @return string
      */
-    public function getName()
+    public static function getName()
     {
         return self::FILTER_NAME;
     }

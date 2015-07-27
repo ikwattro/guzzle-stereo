@@ -18,7 +18,7 @@ interface FilterInterface
     /**
      * @return string
      */
-    public function getName();
+    public static function getName();
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response

@@ -28,7 +28,6 @@ class RecorderSpec extends ObjectBehavior
 
     function it_should_load_a_configuration_file_if_provided()
     {
-
         $this->beConstructedWith(__DIR__, $this->getConfigFile());
         $config = Yaml::parse(file_get_contents($this->getConfigFile()));
         $this->getConfig()->shouldEqual($config);

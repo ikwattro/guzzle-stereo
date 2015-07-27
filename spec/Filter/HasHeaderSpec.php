@@ -23,11 +23,6 @@ class HasHeaderSpec extends ObjectBehavior
         $this->shouldHaveType('Ikwattro\GuzzleStereo\Filter\FilterInterface');
     }
 
-    function it_should_have_a_name()
-    {
-        $this->getName()->shouldReturn('has_header');
-    }
-
     function it_should_have_a_header_key()
     {
         $this->getHeaderName()->shouldReturn('Content-Type');

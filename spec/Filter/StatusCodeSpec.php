@@ -20,12 +20,6 @@ class StatusCodeSpec extends ObjectBehavior
         $this->shouldHaveType('Ikwattro\GuzzleStereo\Filter\FilterInterface');
     }
 
-    function it_should_have_a_name_on_construct()
-    {
-        $this->beConstructedWith(200);
-        $this->getName()->shouldReturn('status_code');
-    }
-
     function it_should_have_a_code_on_construct()
     {
         $this->beConstructedWith(200);
