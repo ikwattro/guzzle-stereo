@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the GuzzleStero package
+ * This file is part of the GuzzleStereo package
 *
 * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
 *
@@ -12,6 +12,7 @@
 
 namespace Ikwattro\GuzzleStereo\Formatter;
 
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
 class ResponseFormatter
@@ -28,6 +29,11 @@ class ResponseFormatter
         return $format;
     }
 
+    public function rebuildTrack(array $trackContent)
+    {
+        return new Response($trackContent['code'], $trackContent['headers'], $trackContent['body']);
+    }
+
     public function encodeResponsesCollection(array $responses)
     {
         $formatted = [];
@@ -36,5 +42,16 @@ class ResponseFormatter
         }
 
         return json_encode($formatted, JSON_PRETTY_PRINT);
+    }
+
+    public function rebuildFromTape($tapeContent)
+    {
+        $decoded = json_decode($tapeContent, true);
+        $tracks = [];
+        foreach ($decoded as $track) {
+            $tracks[] = $this->rebuildTrack($track);
+        }
+
+        return $tracks;
     }
 }

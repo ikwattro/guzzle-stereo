@@ -102,10 +102,20 @@ $recorder->dump();
 
 A file named `record_ + {tape_name}` will be created in the provided store directory containing the responses passing the filters :
 
-//FILE CONTENT WILL COME HERE
+### Replaying
 
+In order to replay the recorded tapes, you can use the `Player`. The player is in fact creating a Mock Handler and will return you
+a `GuzzleHttp\Client` instance created with the MockHandler containing the responses from the tape file.
 
-... Doc to be continued
+```php
+
+use Ikwattro\GuzzleStereo\Player;
+
+$player = Player::replayFromTape('/path/to/tape.json');
+
+$player->get('/');
+// will return you the first response record present in the tape
+```
 
 ---
 

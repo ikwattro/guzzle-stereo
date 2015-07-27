@@ -36,4 +36,14 @@ class ResponseFormatterSpec extends ObjectBehavior
         $formatted = json_encode(array($format), JSON_PRETTY_PRINT);
         $this->encodeResponsesCollection($responses)->shouldEqual($formatted);
     }
+
+    function it_should_rebuild_responses_from_tape()
+    {
+        $response = new Response(200, array('Accept' => 'application/json'), '{"id":1}');
+        $stack = array($response);
+        $content = $this->encodeResponsesCollection($stack);
+
+        $this->rebuildFromTape($content)->shouldHaveCount(1);
+        $this->rebuildFromTape($content)[0]->shouldHaveType('GuzzleHttp\Psr7\Response');
+    }
 }

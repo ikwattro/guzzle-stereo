@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the GuzzleStero package
+ * This file is part of the GuzzleStereo package
 *
 * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
 *
@@ -181,6 +181,24 @@ class Recorder
                 $this->writer->write($fileName, $content);
             }
         }
+    }
+
+    /**
+     * Returns the content of a specific tape without writing it to disk
+     *
+     * @param string $name
+     * @return null|string
+     */
+    public function getTapeContent($name)
+    {
+        $tape = $this->getTape($name);
+        if ($tape->hasResponses()) {
+            $content = $this->formatter->encodeResponsesCollection($tape->getResponses());
+
+            return $content;
+        }
+
+        return null;
     }
 
     /**

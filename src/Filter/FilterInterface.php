@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the GuzzleStero package
+ * This file is part of the GuzzleStereo package
  *
  * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
  *
