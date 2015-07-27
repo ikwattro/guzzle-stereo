@@ -11,7 +11,7 @@
 
 namespace Ikwattro\GuzzleStereo\Filter;
 
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
 
 class StatusCode implements FilterInterface
 {
@@ -47,11 +47,11 @@ class StatusCode implements FilterInterface
     }
 
     /**
-     * @param \GuzzleHttp\Psr7\Response $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return bool
      */
-    public function isIncluded(Response $response)
+    public function isIncluded(ResponseInterface $response)
     {
         return $response->getStatusCode() === $this->filterCode;
     }

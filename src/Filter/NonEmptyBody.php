@@ -13,17 +13,25 @@ namespace Ikwattro\GuzzleStereo\Filter;
 
 use Psr\Http\Message\ResponseInterface;
 
-interface FilterInterface
+class NonEmptyBody implements FilterInterface
 {
+    const FILTER_NAME = 'non_empty_body';
+
     /**
      * @return string
      */
-    public function getName();
+    public function getName()
+    {
+        return self::FILTER_NAME;
+    }
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return bool
      */
-    public function isIncluded(ResponseInterface $response);
+    public function isIncluded(ResponseInterface $response)
+    {
+        return !empty((string) $response->getBody());
+    }
 }
