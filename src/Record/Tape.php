@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the GuzzleStereo package
-*
-* (c) Christophe Willemsen <willemsen.christophe@gmail.com>
-*
-* For the full copyright and license information, please view the LICENSE
-* file that was distributed with this source code.
-*
-*/
+ * This file is part of the GuzzleStereo package.
+ *
+ * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Ikwattro\GuzzleStereo\Record;
 
@@ -100,11 +99,14 @@ class Tape
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @return bool
      */
     public function processFiltersStack(ResponseInterface $response)
     {
-        if (!$this->hasFilters()) { return true; }
+        if (!$this->hasFilters()) {
+            return true;
+        }
 
         foreach ($this->filters as $filter) {
             if ($filter->isIncluded($response)) {

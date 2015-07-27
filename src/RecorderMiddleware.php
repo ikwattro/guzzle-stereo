@@ -12,12 +12,12 @@
 namespace Ikwattro\GuzzleStereo;
 
 use GuzzleHttp\Exception\RequestException;
-use Ikwattro\GuzzleStereo\Recorder;
 
 class RecorderMiddleware
 {
     /**
      * @param \Ikwattro\GuzzleStereo\Recorder
+     *
      * @return callable
      */
     public static function record(Recorder $recorder)
@@ -27,6 +27,7 @@ class RecorderMiddleware
                 return $handler($request, $options)->then(
                   function ($response) use ($request, $recorder) {
                       $recorder->record($response);
+
                       return $response;
                   },
                   function ($reason) use ($request, $recorder) {
@@ -36,6 +37,7 @@ class RecorderMiddleware
                       if ($response) {
                           $recorder->record($response);
                       }
+
                       return \GuzzleHttp\Promise\rejection_for($reason);
                   }
                 );

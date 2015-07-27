@@ -2,4 +2,6 @@
 
 namespace Ikwattro\GuzzleStereo\Exception;
 
-class RecorderException extends \RuntimeException{}
+class RecorderException extends \RuntimeException
+{
+}

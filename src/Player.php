@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the GuzzleStereo package
-*
-* (c) Christophe Willemsen <willemsen.christophe@gmail.com>
-*
-* For the full copyright and license information, please view the LICENSE
-* file that was distributed with this source code.
-*
-*/
+ * This file is part of the GuzzleStereo package.
+ *
+ * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Ikwattro\GuzzleStereo;
 
@@ -27,6 +26,7 @@ class Player
 
     /**
      * @param $tapeFileLocation
+     *
      * @return \Ikwattro\GuzzleStereo\Player
      */
     public static function replayFromTape($tapeFileLocation)
@@ -40,6 +40,7 @@ class Player
 
     /**
      * @param $content
+     *
      * @return \Ikwattro\GuzzleStereo\Player
      */
     public static function replayFromContent($content)
@@ -71,6 +72,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function get($uri, array $options = [])
@@ -81,6 +83,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function head($uri, array $options = [])
@@ -91,6 +94,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function post($uri, array $options = [])
@@ -101,6 +105,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function patch($uri, array $options = [])
@@ -111,6 +116,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function put($uri, array $options = [])
@@ -121,6 +127,7 @@ class Player
     /**
      * @param $uri
      * @param array $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function delete($uri, array $options = [])

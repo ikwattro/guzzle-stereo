@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the GuzzleStereo package
-*
-* (c) Christophe Willemsen <willemsen.christophe@gmail.com>
-*
-* For the full copyright and license information, please view the LICENSE
-* file that was distributed with this source code.
-*
-*/
+ * This file is part of the GuzzleStereo package.
+ *
+ * (c) Christophe Willemsen <willemsen.christophe@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Ikwattro\GuzzleStereo;
 
@@ -37,7 +36,6 @@ class Recorder
      */
     protected $tapes = [];
 
-
     /**
      * @var \Ikwattro\GuzzleStereo\Store\Writer
      */
@@ -49,7 +47,7 @@ class Recorder
     protected $formatter;
 
     /**
-     * @param string $storeDirectory
+     * @param string      $storeDirectory
      * @param null|string $configurationFile
      */
     public function __construct($storeDirectory, $configurationFile = null)
@@ -123,6 +121,7 @@ class Recorder
 
     /**
      * @param string $name
+     *
      * @return \Ikwattro\GuzzleStereo\Record\Tape
      * @throw \Ikwattro\GuzzleStereo\Exception\RecordException When the tape can not be found
      */
@@ -136,12 +135,12 @@ class Recorder
     }
 
     /**
-     * Process configuration for registering tapes and filters
+     * Process configuration for registering tapes and filters.
      */
     private function processConfig()
     {
         $allowedFilters = [
-            'status_code' => '\Ikwattro\GuzzleStereo\Filter\StatusCode'
+            'status_code' => '\Ikwattro\GuzzleStereo\Filter\StatusCode',
         ];
         $tapes = isset($this->config['tapes']) ? $this->config['tapes'] : [];
         foreach ($tapes as $name => $settings) {
@@ -150,8 +149,7 @@ class Recorder
                 foreach ($settings['filters'] as $filter => $args) {
                     if (!is_array($args)) {
                         $f = new $allowedFilters[$filter]($args);
-                    }
-                    else {
+                    } else {
                         $f = new $allowedFilters[$filter](...$args);
                     }
                     $tape->addFilter($f);
@@ -170,13 +168,13 @@ class Recorder
     }
 
     /**
-     * Dumps the tapes on disk
+     * Dumps the tapes on disk.
      */
     public function dump()
     {
         foreach ($this->tapes as $tape) {
             if ($tape->hasResponses()) {
-                $fileName = 'record_' . $tape->getName() . '.json';
+                $fileName = 'record_'.$tape->getName().'.json';
                 $content = $this->formatter->encodeResponsesCollection($tape->getResponses());
                 $this->writer->write($fileName, $content);
             }
@@ -184,9 +182,10 @@ class Recorder
     }
 
     /**
-     * Returns the content of a specific tape without writing it to disk
+     * Returns the content of a specific tape without writing it to disk.
      *
      * @param string $name
+     *
      * @return null|string
      */
     public function getTapeContent($name)
@@ -198,7 +197,7 @@ class Recorder
             return $content;
         }
 
-        return null;
+        return;
     }
 
     /**
