@@ -11,11 +11,13 @@
 
 namespace Ikwattro\GuzzleStereo;
 
+use Ikwattro\GuzzleStereo\Configuration\StereoConfiguration;
 use Ikwattro\GuzzleStereo\Exception\RecorderException;
 use Ikwattro\GuzzleStereo\Formatter\ResponseFormatter;
 use Ikwattro\GuzzleStereo\Record\Tape;
 use Ikwattro\GuzzleStereo\Store\Writer;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -46,6 +48,8 @@ class Recorder
      */
     protected $formatter;
 
+    protected $mixer;
+
     /**
      * @param string      $storeDirectory
      * @param null|string $configurationFile
@@ -55,6 +59,7 @@ class Recorder
         $this->storeDirectory = $storeDirectory;
         $this->writer = new Writer($this->storeDirectory);
         $this->formatter = new ResponseFormatter();
+        $this->mixer = new Mixer();
         if ($configurationFile) {
             $this->loadConfig($configurationFile);
         }
@@ -139,23 +144,28 @@ class Recorder
      */
     private function processConfig()
     {
-        $allowedFilters = [
-            'status_code' => '\Ikwattro\GuzzleStereo\Filter\StatusCode',
-            'non_empty_body' => '\Ikwattro\GuzzleStereo\Filter\NonEmptyBody',
-            'has_header' => '\Ikwattro\GuzzleStereo\Filter\HasHeader',
-        ];
-        $tapes = isset($this->config['tapes']) ? $this->config['tapes'] : [];
-        foreach ($tapes as $name => $settings) {
+        $processor = new Processor();
+        $coreConfig = Yaml::parse(file_get_contents(__DIR__.'/Resources/core_filters.yml'));
+        $configs = array($this->config, $coreConfig);
+        $configuration = new StereoConfiguration();
+        $processedConfiguration = $processor->processConfiguration(
+          $configuration,
+          $configs
+        );
+
+        foreach ($processedConfiguration['core_filters'] as $filterClass) {
+            $this->mixer->addFilter($filterClass);
+        }
+
+        foreach ($processedConfiguration['custom_filters'] as $customFilterClass) {
+            $this->mixer->addFilter($customFilterClass);
+        }
+
+        foreach ($processedConfiguration['tapes'] as $name => $settings) {
             $tape = new Tape($name);
-            if (isset($settings['filters'])) {
-                foreach ($settings['filters'] as $filter => $args) {
-                    if (!is_array($args)) {
-                        $f = new $allowedFilters[$filter]($args);
-                    } else {
-                        $f = new $allowedFilters[$filter](...$args);
-                    }
-                    $tape->addFilter($f);
-                }
+            foreach ($settings['filters'] as $k => $args) {
+                $filter = $this->mixer->createFilter($k, $args);
+                $tape->addFilter($filter);
             }
             $this->addTape($tape);
         }

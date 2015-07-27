@@ -16,11 +16,14 @@ class SimpleIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->recorder = new Recorder(sys_get_temp_dir(), __DIR__.'/../resources/stereo.yml');
     }
 
+    /**
+     * @group build
+     */
     public function testAllTapesAreRegistered()
     {
-        $this->assertTapeExist('tape-all');
-        $this->assertTapeExist('tape-success');
-        $this->assertTapeExist('tape-unauthorized');
+        $this->assertTapeExist('tape_all');
+        $this->assertTapeExist('tape_success');
+        $this->assertTapeExist('tape_unauthorized');
     }
 
     public function assertFilterIsSetForSuccessResponses()

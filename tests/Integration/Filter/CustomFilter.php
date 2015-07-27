@@ -9,7 +9,7 @@ class CustomFilter implements  FilterInterface
 {
     const FILTER_NAME = 'custom-filter';
 
-    public function getName()
+    public static function getName()
     {
         return self::FILTER_NAME;
     }

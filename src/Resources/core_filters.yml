@@ -1,0 +1,4 @@
+core_filters:
+  - "Ikwattro\\GuzzleStereo\\Filter\\StatusCode"
+  - "Ikwattro\\GuzzleStereo\\Filter\\HasHeader"
+  - "Ikwattro\\GuzzleStereo\\Filter\\NonEmptyBody"
