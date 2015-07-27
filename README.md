@@ -121,9 +121,13 @@ $player->get('/');
 
 ### TODO
 
+* more filters
 * blacklists
 * null tape
 * better configuration management (maybe Symfony config component)
+* combined requestAndResponses
+* filter what should be returned from the player
+* your ideas ?
 
 ---
 
