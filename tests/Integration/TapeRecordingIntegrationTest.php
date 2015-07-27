@@ -105,6 +105,54 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $this->recorder->getTape('filter-non-empty')->getResponses());
     }
 
+    public function testHasHeaderFilterIsRecordingResponsesWithCorrespondingFilter()
+    {
+        $mock = SimpleMockHandler::create()
+          ->withMultipleResponses(5, 200, ['Content-Type' => 'application/json'], json_encode(array('id' => 1)))
+          ->build();
+        $client = SimpleMockedClient::createMockedClient($mock, $this->recorder);
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $client->get('/');
+            } catch (RequestException $e) {
+
+            }
+        }
+        $this->assertCount(5, $this->recorder->getTape('filter-has-header')->getResponses());
+    }
+
+    public function testHasHeaderFilterIsNotRecordingResponsesWithoutCorrespondingFilter()
+    {
+        $mock = SimpleMockHandler::create()
+          ->withMultipleResponses(5, 200, ['Accept' => 'application/json'], json_encode(array('id' => 1)))
+          ->build();
+        $client = SimpleMockedClient::createMockedClient($mock, $this->recorder);
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $client->get('/');
+            } catch (RequestException $e) {
+
+            }
+        }
+        $this->assertCount(0, $this->recorder->getTape('filter-has-header')->getResponses());
+    }
+
+    public function testHasHeaderFilterIsRecordingResponsesWithCorrespondingFilterAndOthers()
+    {
+        $mock = SimpleMockHandler::create()
+          ->withMultipleResponses(5, 200, ['Content-Type' => 'application/json', 'Accept' => 'application/json'], json_encode(array('id' => 1)))
+          ->build();
+        $client = SimpleMockedClient::createMockedClient($mock, $this->recorder);
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $client->get('/');
+            } catch (RequestException $e) {
+
+            }
+        }
+        $this->assertCount(5, $this->recorder->getTape('filter-has-header')->getResponses());
+    }
+
     public function testRecorderIsDumpingTapes()
     {
         $mock = SimpleMockHandler::create()

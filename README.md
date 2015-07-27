@@ -143,6 +143,17 @@ tapes:
 			non_empty_body: ~
 ```
 
+### Has Header
+
+Include the `Response` only if she contains a header with the specified key.
+
+```yaml
+tapes:
+	my_tape:
+		filters:
+			has_header: "Content-Type"
+```
+
 ---
 
 ### TODO

@@ -142,6 +142,7 @@ class Recorder
         $allowedFilters = [
             'status_code' => '\Ikwattro\GuzzleStereo\Filter\StatusCode',
             'non_empty_body' => '\Ikwattro\GuzzleStereo\Filter\NonEmptyBody',
+            'has_header' => '\Ikwattro\GuzzleStereo\Filter\HasHeader',
         ];
         $tapes = isset($this->config['tapes']) ? $this->config['tapes'] : [];
         foreach ($tapes as $name => $settings) {
