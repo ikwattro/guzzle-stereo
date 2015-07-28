@@ -63,7 +63,6 @@ your test suites.
 Instantiate the recorder by providing a writable store directory and the location of your tapes definitions file :
 
 ```php
-
 require_once(__DIR__.'/vendor/autoload.php);
 
 use Ikwattro\GuzzleStereo\Recorder;
@@ -84,7 +83,6 @@ $client = new \GuzzleHttp\Client(['handler' => $stack]);
 You can now make http requests with the Client as you would usually do, for e.g. here we'll call the Github events API 10 times :
 
 ```php
-
 for ($i = 0; $i < 10; $i++) {
 	try {
 		$client->get('https://api.github.com/events');
@@ -108,7 +106,6 @@ In order to replay the recorded tapes, you can use the `Player`. The player is i
 a `GuzzleHttp\Client` instance created with the MockHandler containing the responses from the tape file.
 
 ```php
-
 use Ikwattro\GuzzleStereo\Player;
 
 $player = Player::replayFromTape('/path/to/tape.json');
@@ -171,7 +168,6 @@ an event done by the Github users you will pass as arguments when associating yo
 
 ```php
 <?php
-
 namespace Acme\MyApp\Filter;
 
 use Ikwattro\GuzzleStereo\Filter\FilterInterface;
