@@ -34,7 +34,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(15, $this->recorder->getTape('tape_all')->getResponses());
+        $this->assertCount(15, $this->recorder->getTape('tape-all')->getResponses());
     }
 
     public function testTapeSuccessIsRecordingOnlySuccessMessages()
@@ -52,7 +52,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(5, $this->recorder->getTape('tape_success')->getResponses());
+        $this->assertCount(5, $this->recorder->getTape('tape-success')->getResponses());
     }
 
     public function testTapeUnauthorizedIsRecordingOnlyUnauthorizedMessages()
@@ -70,7 +70,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(5, $this->recorder->getTape('tape_unauthorized')->getResponses());
+        $this->assertCount(5, $this->recorder->getTape('tape-unauthorized')->getResponses());
     }
 
     public function testNonEmptyBodyFilterIsRecordingTracks()
@@ -86,7 +86,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(5, $this->recorder->getTape('filter_non_empty')->getResponses());
+        $this->assertCount(5, $this->recorder->getTape('filter-non-empty')->getResponses());
     }
 
     public function testNonEmptyBodyFilterIsNotRecordingTracksWhenBodyIsEmpty()
@@ -102,7 +102,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(0, $this->recorder->getTape('filter_non_empty')->getResponses());
+        $this->assertCount(0, $this->recorder->getTape('filter-non-empty')->getResponses());
     }
 
     public function testHasHeaderFilterIsRecordingResponsesWithCorrespondingFilter()
@@ -118,7 +118,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(5, $this->recorder->getTape('filter_has_header')->getResponses());
+        $this->assertCount(5, $this->recorder->getTape('filter-has-header')->getResponses());
     }
 
     public function testHasHeaderFilterIsNotRecordingResponsesWithoutCorrespondingFilter()
@@ -134,7 +134,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(0, $this->recorder->getTape('filter_has_header')->getResponses());
+        $this->assertCount(0, $this->recorder->getTape('filter-has-header')->getResponses());
     }
 
     public function testHasHeaderFilterIsRecordingResponsesWithCorrespondingFilterAndOthers()
@@ -150,7 +150,7 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
 
             }
         }
-        $this->assertCount(5, $this->recorder->getTape('filter_has_header')->getResponses());
+        $this->assertCount(5, $this->recorder->getTape('filter-has-header')->getResponses());
     }
 
     public function testRecorderIsDumpingTapes()
@@ -169,9 +169,9 @@ class TapeRecordingIntegrationTest extends \PHPUnit_Framework_TestCase
             }
         }
         $this->recorder->dump();
-        $successTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_success.json';
-        $AllTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_all.json';
-        $UnauthTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape_unauthorized.json';
+        $successTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-success.json';
+        $AllTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-all.json';
+        $UnauthTapeFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'record_tape-unauthorized.json';
         $this->assertFileExists($successTapeFile);
         $this->assertFileExists($AllTapeFile);
         $this->assertFileExists($UnauthTapeFile);

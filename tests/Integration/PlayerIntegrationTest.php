@@ -36,7 +36,7 @@ class PlayerIntegrationTest extends \PHPUnit_Framework_TestCase
             }
         }
 
-        $content = $this->recorder->getTapeContent('tape_all');
+        $content = $this->recorder->getTapeContent('tape-all');
 
         $player = Player::replayFromContent($content);
         $this->assertInstanceOf('GuzzleHttp\Client', $player->getClient());

@@ -21,9 +21,9 @@ class SimpleIntegrationTest extends \PHPUnit_Framework_TestCase
      */
     public function testAllTapesAreRegistered()
     {
-        $this->assertTapeExist('tape_all');
-        $this->assertTapeExist('tape_success');
-        $this->assertTapeExist('tape_unauthorized');
+        $this->assertTapeExist('tape-all');
+        $this->assertTapeExist('tape-success');
+        $this->assertTapeExist('tape-unauthorized');
     }
 
     public function assertFilterIsSetForSuccessResponses()
