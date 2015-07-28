@@ -211,7 +211,8 @@ class ActorFilter implements FilterInterface
 You can now add your custom filter in your configuration and use it in your tapes :
 
 ```yaml
-custom_filters: "Acme\MyApp\Filter\ActorFilter"
+custom_filters:
+	- "Acme\MyApp\Filter\ActorFilter"
 	- 
 tapes:
 	my_tape:
