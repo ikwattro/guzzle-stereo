@@ -154,7 +154,72 @@ tapes:
 			has_header: "Content-Type"
 ```
 
----
+## Creating your own filters
+
+Creating a filter is really easy. You need to create a filter class implementing `Ikwattro\GuzzleStereo\Filter\FilterInterface` and
+declaring the two methods :
+
+* `public static function getName()`
+* `public function isIncluded(ResponseInterface $response)`
+
+The `getName` static function is responsible for defining the name of the filters in your tapes.
+
+The `isIncluded` function will contain the logic determining if the received `Response` should be included or not in the Tape.
+
+The following example filter will receive a response from the Github events api, and will record it only if the body contains
+an event done by the Github users you will pass as arguments when associating your filter to a tape.
+
+```php
+<?php
+
+namespace Acme\MyApp\Filter;
+
+use Ikwattro\GuzzleStereo\Filter\FilterInterface;
+use Psr\Http\Message\ResponseInterface;
+
+class ActorFilter implements FilterInterface
+{
+	const FILTER_NAME = "actor_filter";
+	
+	protected $users;
+	
+	public function__construct(array $users = array())
+	{
+		$this->users = $users;
+	}
+	
+	public static function getName()
+	{
+		return self::FILTER_NAME;
+	}
+	
+	public function isIncluded(ResponseInterface $response)
+	{
+		$body = json_decode((string) $response->getBody());
+		foreach ($body as $event) {
+			$actor = $event['actor']['login'];
+			if (in_array($actor, $this->users)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+}
+```
+
+You can now add your custom filter in your configuration and use it in your tapes :
+
+```yaml
+custom_filters: "Acme\MyApp\Filter\ActorFilter"
+	- 
+tapes:
+	my_tape:
+		filters:
+			actor_filter: ["jexp","ikwattro","luanne"]
+```
+
+Your tape will now contain only Responses that included in their actors one of the provided actors.
 
 ### TODO
 
