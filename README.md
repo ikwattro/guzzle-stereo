@@ -2,7 +2,7 @@
 
 **Record** and **Replay** HTTP Responses easily.
 
-[![Build Status](https://travis-ci.org/ikwattro/guzzle-stereo.svg?branch=master)](https://travis-ci.org/ikwattro/guzzle-stereo)
+[![Build Status](https://travis-ci.org/ikwattro/guzzle-stereo.svg?branch=master)](https://travis-ci.org/ikwattro/guzzle-stereo) [![CodeHunt.io](https://img.shields.io/badge/vote-codehunt.io-02AFD1.svg)](http://codehunt.io/sub/guzzle-stereo/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ### Requirements
 
