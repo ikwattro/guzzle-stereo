@@ -63,7 +63,7 @@ your test suites.
 Instantiate the recorder by providing a writable store directory and the location of your tapes definitions file :
 
 ```php
-require_once(__DIR__.'/vendor/autoload.php);
+require_once(__DIR__.'/vendor/autoload.php');
 
 use Ikwattro\GuzzleStereo\Recorder;
 
