@@ -24,6 +24,7 @@ class StereoConfiguration implements ConfigurationInterface
         $rootNode
           ->children()
             ->scalarNode('cache_directory')->end()
+            ->booleanNode('marker_header')->defaultValue(false)->end()
             ->arrayNode('tapes')
                 ->normalizeKeys(false)
                 ->prototype('array')

@@ -16,6 +16,13 @@ use Psr\Http\Message\ResponseInterface;
 
 class ResponseFormatter
 {
+    protected $markerHeader;
+
+    public function __construct($markerHeader)
+    {
+        $this->markerHeader = $markerHeader;
+    }
+
     public function formatResponse(ResponseInterface $response)
     {
         $format = [
@@ -23,6 +30,10 @@ class ResponseFormatter
             'headers' => $response->getHeaders(),
             'body' => (string) $response->getBody(),
         ];
+
+        if ($this->markerHeader) {
+            $format['headers']['X-Guzzle-Stereo'] = true;
+        }
 
         return $format;
     }

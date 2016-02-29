@@ -58,11 +58,11 @@ class Recorder
     {
         $this->storeDirectory = $storeDirectory;
         $this->writer = new Writer($this->storeDirectory);
-        $this->formatter = new ResponseFormatter();
         $this->mixer = new Mixer();
         if ($configurationFile) {
             $this->loadConfig($configurationFile);
         }
+        $this->formatter = new ResponseFormatter($this->config['marker_header']);
     }
 
     /**
