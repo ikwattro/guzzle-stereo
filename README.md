@@ -17,6 +17,8 @@ Require the composer package :
 composer require ikwattro/guzzle-stereo
 ```
 
+NB: If you're using the Symfony Framework, you can take a look at the [GuzzleStereoBundle](https://github.com/estahn/guzzle-stereo-bundle) from @estahn.
+
 ## Basics
 
 ### Recorder
