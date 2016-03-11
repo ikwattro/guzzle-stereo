@@ -26,9 +26,6 @@ class Writer
     public function __construct($storeLocation)
     {
         $this->storeLocation = (string) $storeLocation;
-        if (!$this->isStoreWritable()) {
-            throw new RecorderException(sprintf('The directory "%s" is not writable', $this->storeLocation));
-        }
     }
 
     /**
@@ -53,6 +50,9 @@ class Writer
      */
     public function write($file, $content)
     {
+        if (!$this->isStoreWritable()) {
+            throw new RecorderException(sprintf('The directory "%s" is not writable', $this->storeLocation));
+        }
         file_put_contents($this->storeLocation.DIRECTORY_SEPARATOR.$file, $content);
     }
 }

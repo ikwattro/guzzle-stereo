@@ -24,7 +24,7 @@ class MixerSpec extends ObjectBehavior
         $this->hasFilter('filter')->shouldReturn(false);
     }
 
-    function it_should_register_a_filter(FilterInterface $filter)
+    function it_should_register_a_filter()
     {
         $filter = 'Ikwattro\GuzzleStereo\Filter\StatusCode';
         $this->addFilter($filter);

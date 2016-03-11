@@ -3,11 +3,17 @@
 namespace spec\Ikwattro\GuzzleStereo\Formatter;
 
 use GuzzleHttp\Psr7\Response;
+use Ikwattro\GuzzleStereo\Formatter\ResponseFormatter;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ResponseFormatterSpec extends ObjectBehavior
 {
+    function let()
+    {
+        //return new ResponseFormatter(false);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Ikwattro\GuzzleStereo\Formatter\ResponseFormatter');

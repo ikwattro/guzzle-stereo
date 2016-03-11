@@ -18,7 +18,7 @@ class ResponseFormatter
 {
     protected $markerHeader;
 
-    public function __construct($markerHeader)
+    public function __construct($markerHeader = false)
     {
         $this->markerHeader = $markerHeader;
     }

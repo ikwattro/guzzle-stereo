@@ -10,11 +10,6 @@ before_script:
 
 script:
     - ./vendor/bin/phpspec run -f pretty
-    - ./vendor/bin/phpunit
-
-matrix:
-  allow_failures:
-    - php: 7.0
 
 notifications:
     email: "willemsen.christophe@gmail.com"
