@@ -9,7 +9,7 @@ before_script:
     - composer install --prefer-source --no-interaction
 
 script:
-    - ./vendor/bin/phpspec run -f pretty
+    - ./vendor/bin/phpunit
 
 notifications:
     email: "willemsen.christophe@gmail.com"
