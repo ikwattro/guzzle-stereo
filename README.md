@@ -218,6 +218,16 @@ tapes:
 
 Your tape will now contain only Responses that included in their actors one of the provided actors.
 
+#### Extra configuration setting :
+
+Your Responses objects can contain a specific header as a marker by setting the following configuration flag :
+
+```yaml
+marker_header: true
+```
+
+which will add a `X-Guzzle-Stereo` header with a `true` value.
+
 ### TODO
 
 * more filters
