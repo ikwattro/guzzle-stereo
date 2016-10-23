@@ -10,6 +10,7 @@ before_script:
 
 script:
     - ./vendor/bin/phpunit
+    - ./vendor/bin/phpspec run -f pretty
 
 notifications:
     email: "willemsen.christophe@gmail.com"
