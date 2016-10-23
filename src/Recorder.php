@@ -62,7 +62,7 @@ class Recorder
         if ($configurationFile) {
             $this->loadConfig($configurationFile);
         }
-        $this->formatter = new ResponseFormatter($this->config['marker_header']);
+        $this->formatter = new ResponseFormatter(isset($this->config['marker_header']) ? $this->config['marker_header'] : false);
     }
 
     /**
